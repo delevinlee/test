@@ -13,7 +13,7 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity {
     @BindView(R.id.main_recuclerView)
     RecyclerView recyclerView;
-    private MainAgitdapter mainAdapter;
+    private MainAdapter mainAdapter;
     List<String> datas = new ArrayList<>();
     @Override
     protected int getLayoutID() {
@@ -35,4 +35,5 @@ public class MainActivity extends BaseActivity {
         mainAdapter = new MainAdapter(this);
         recyclerView.setAdapter(mainAdapter);
     }
+
 }
