@@ -55,8 +55,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindData(String str,int pos){
+        public void bindData(String str,final int pos){
             tvTitle.setText(str);
+            tvTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemOnClickListener.Onclick(pos);
+                }
+            });
         }
     }
     interface OnItemOnClickListener{
