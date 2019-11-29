@@ -1,13 +1,38 @@
 package com.delevin.listmanger;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import com.delevin.listmanger.base.BaseActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+
+public class MainActivity extends BaseActivity {
+    @BindView(R.id.main_recuclerView)
+    RecyclerView recyclerView;
+    private MainAgitdapter mainAdapter;
+    List<String> datas = new ArrayList<>();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
+    @Override
+    protected void init() {
+        initRecyclerView();
+    }
 
+    @Override
+    protected void initData() {
+        datas.add("自定义滑动尺度");
+        mainAdapter.setDatas(datas);
+    }
+
+    private void initRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mainAdapter = new MainAdapter(this);
+        recyclerView.setAdapter(mainAdapter);
     }
 }
